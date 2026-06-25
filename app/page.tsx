@@ -9,15 +9,16 @@ export default function Home() {
       <h1>Blue Jays Fan Hub</h1>
 
       <div className="card">
+
         <p>
           Welcome to the Blue Jays Fan Hub!
         </p>
 
         <p>
-          This website demonstrates React concepts including
-          components, props, state management, event handling,
-          conditional rendering, and CSS styling.
+          This project shows React basics like components, props,
+          state, and conditional rendering.
         </p>
+
       </div>
 
     </main>

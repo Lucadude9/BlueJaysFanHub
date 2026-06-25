@@ -2,41 +2,22 @@
 
 import { useState } from "react";
 
+// small component for fan mood tracking
 export default function TeamMood() {
 
   const [mood, setMood] = useState("Excited");
 
-
   return (
-
     <div className="card">
 
-      <h2>
-        Fan Mood
-      </h2>
+      <h2>Fan Mood</h2>
 
+      <p>Current Mood: {mood}</p>
 
-      <p>
-        Current Mood: {mood}
-      </p>
-
-
-      <button onClick={() => setMood("Excited")}>
-        Excited
-      </button>
-
-
-      <button onClick={() => setMood("Nervous")}>
-        Nervous
-      </button>
-
-
-      <button onClick={() => setMood("Confident")}>
-        Confident
-      </button>
-
+      <button onClick={() => setMood("Excited")}>Excited</button>
+      <button onClick={() => setMood("Nervous")}>Nervous</button>
+      <button onClick={() => setMood("Confident")}>Confident</button>
 
     </div>
-
   );
 }

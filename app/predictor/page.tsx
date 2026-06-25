@@ -4,57 +4,41 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import TeamMood from "@/components/TeamMood";
 
+export default function Predictor() {
 
-export default function Predictor(){
+  // stores win or lose prediction
+  const [prediction, setPrediction] = useState("");
 
-const [prediction,setPrediction] = useState("");
+  return (
 
+    <main className="container">
 
-return (
+      <Navbar />
 
-<main className="container">
+      <h1>Game Predictor</h1>
 
-<Navbar />
+      <div className="card">
 
-<h1>
-Game Predictor
-</h1>
+        <h2>Will the Blue Jays win?</h2>
 
+        {/* buttons update prediction state */}
+        <button onClick={() => setPrediction("Win")}>
+          Win
+        </button>
 
-<div className="card">
+        <button onClick={() => setPrediction("Lose")}>
+          Lose
+        </button>
 
-<h2>
-Will the Blue Jays win?
-</h2>
+        {/* only shows after user clicks */}
+        {prediction && (
+          <p>Your prediction: {prediction}</p>
+        )}
 
+      </div>
 
-<button onClick={()=>setPrediction("Win")}>
-Win
-</button>
+      <TeamMood />
 
-
-<button onClick={()=>setPrediction("Lose")}>
-Lose
-</button>
-
-
-{
-prediction && (
-<p>
-Your prediction: {prediction}
-</p>
-)
-}
-
-
-</div>
-
-
-<TeamMood />
-
-
-</main>
-
-);
-
+    </main>
+  );
 }

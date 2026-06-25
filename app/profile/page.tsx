@@ -1,94 +1,58 @@
 "use client";
 
-import {useState} from "react";
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Greeting from "@/components/Greeting";
 
+export default function Profile() {
 
-export default function Profile(){
+  // user inputs
+  const [name, setName] = useState("");
+  const [player, setPlayer] = useState("");
 
-const [name,setName]=useState("");
+  // checks if form was submitted
+  const [submitted, setSubmitted] = useState(false);
 
-const [player,setPlayer]=useState("");
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setSubmitted(true);
+  }
 
-const [submitted,setSubmitted]=useState(false);
+  return (
 
+    <main className="container">
 
+      <Navbar />
 
-function handleSubmit(e:React.FormEvent){
+      <h1>Fan Profile</h1>
 
-e.preventDefault();
+      <form className="card" onSubmit={handleSubmit}>
 
-setSubmitted(true);
+        <input
+          placeholder="Enter your name"
+          onChange={(e) => setName(e.target.value)}
+        />
 
-}
+        <br /><br />
 
+        <input
+          placeholder="Favourite player"
+          onChange={(e) => setPlayer(e.target.value)}
+        />
 
+        <br /><br />
 
-return (
+        <button>Submit</button>
 
-<main className="container">
+      </form>
 
-<Navbar />
+      {/* shows message after submit */}
+      {submitted ? (
+        <Greeting name={name} player={player} />
+      ) : (
+        <p>Please enter your information.</p>
+      )}
 
-<h1>
-Fan Profile
-</h1>
-
-
-<form className="card" onSubmit={handleSubmit}>
-
-
-<input
-
-placeholder="Enter your name"
-
-onChange={(e)=>setName(e.target.value)}
-
-/>
-
-
-<br/><br/>
-
-
-<input
-
-placeholder="Favourite player"
-
-onChange={(e)=>setPlayer(e.target.value)}
-
-/>
-
-
-<br/><br/>
-
-
-<button>
-Submit
-</button>
-
-
-</form>
-
-
-
-{
-submitted ?
-
-<Greeting name={name} player={player}/>
-
-:
-
-<p>
-Please enter your information.
-</p>
-
-}
-
-
-
-</main>
-
-);
-
+    </main>
+  );
 }
